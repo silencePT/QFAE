@@ -1,23 +1,23 @@
 meta_data:
-  env: halfcheetah-medium-v2
+  env: halfcheetah-random-v2
   algo: BC_QFAE
-  log_freq: 2e3
+  log_freq: 2000
   path: logs
 # -----------------------------------------------------------------------------
 Q_function:
-  steps: 2e6
+  steps: 2000000
   hidden_dim: 1024
   depth: 2
-  lr: 1e-4
+  lr: 0.0001
   batch_size: 512
   target_update_freq: 2
   tau: 0.05
   gamma: 0.99
 # -----------------------------------------------------------------------------
 policy:
-  steps: 1e6
+  steps: 1000000
   hidden_dim: 1024
   depth: 2
-  lr: 1e-4
+  lr: 0.0001
   batch_size: 512
   rho: 0.01
