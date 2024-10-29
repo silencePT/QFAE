@@ -72,9 +72,9 @@ if __name__ == "__main__":
 
     # training Q-function of Behavior Cloning
     Q_bc = QSarsaLearner(device, state_dim, action_dim, configs["Q_function"]["hidden_dim"],
-                         configs["Q_function"]["depth"], configs["Q_function"]["lr"],
+                         configs["Q_function"]["depth"], float(configs["Q_function"]["lr"]),
                          configs["Q_function"]["target_update_freq"], configs["Q_function"]["tau"],
-                         configs["Q_function"]["gamma"], configs["Q_function"]["q_batch_size"])
+                         configs["Q_function"]["gamma"], configs["Q_function"]["batch_size"])
 
     Q_bc_path = os.path.join(path, 'Q_bc.pt')
     if os.path.exists(Q_bc_path):
@@ -96,7 +96,7 @@ if __name__ == "__main__":
 
     # train Behavior policy with QFAE
     policy = BehaviorReinforcement(device, state_dim, configs["policy"]["hidden_dim"], configs["policy"]["depth"],
-                               action_dim, configs["policy"]["lr"], configs["policy"]["batch_size"], rho)
+                               action_dim, float(configs["policy"]["lr"]), configs["policy"]["batch_size"], rho)
     best_score = 0
     eval_returns = []
     best_bc_path = os.path.join(path, best_bc_pt)
